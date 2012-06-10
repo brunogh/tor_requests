@@ -17,9 +17,9 @@ Jeweler::Tasks.new do |gem|
   gem.name = "tor_requests"
   gem.homepage = "http://github.com/brunogh/tor_requests"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "bruno.ghisi@resultadosdigitais.com.br"
+  gem.summary = "Create anonymously requests through Tor network"
+  gem.description = "Create anonymously requests through Tor network"
+  gem.email = "brunogh@gmail.com"
   gem.authors = ["Bruno Ghisi"]
   # dependencies defined in Gemfile
 end
