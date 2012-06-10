@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{tor_requests}
-  s.version = ""
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Bruno Ghisi}]
@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
     "LICENSE.txt",
     "README.rdoc",
     "Rakefile",
+    "VERSION",
     "lib/tor_requests.rb",
     "spec/spec_helper.rb",
     "spec/tor_requests_spec.rb",
