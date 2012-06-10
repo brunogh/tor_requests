@@ -15,7 +15,7 @@ OR
   
   res = Request.http("google.com", 80, "/")
   
-== Nextt
+== Backlog
 
 * HTTPS
 * Making the running Tor port configurable
