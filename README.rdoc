@@ -7,8 +7,18 @@
 
 2 - Ruby code
   
-  res = Request.new.http("google.com", 80, "/")
-  res.code.should eq("301")
+  res = Request.http("google.com")
+  p res.code
+  p res.body
+  
+OR
+  
+  res = Request.http("google.com", 80, "/")
+  
+== Nextt
+
+* HTTPS
+* Making the running Tor port configurable
 
 == Contributing to tor_requests
  
