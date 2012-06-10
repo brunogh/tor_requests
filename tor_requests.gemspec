@@ -27,7 +27,8 @@ Gem::Specification.new do |s|
     "Rakefile",
     "lib/tor_requests.rb",
     "spec/spec_helper.rb",
-    "spec/tor_requests_spec.rb"
+    "spec/tor_requests_spec.rb",
+    "tor_requests.gemspec"
   ]
   s.homepage = %q{http://github.com/brunogh/tor_requests}
   s.licenses = [%q{MIT}]
