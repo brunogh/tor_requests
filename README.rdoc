@@ -1,8 +1,9 @@
 = tor_requests
 
 1 - Install Tor
-https://www.torproject.org
-On Settings -> Advanced -> Fix the port to 9051
+
+* https://www.torproject.org
+* On Settings -> Advanced -> Fix the port to 9051
 
 2 - Ruby code
   
