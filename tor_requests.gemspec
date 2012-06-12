@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{tor_requests}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Bruno Ghisi}]
-  s.date = %q{2012-06-10}
+  s.date = %q{2012-06-12}
   s.description = %q{Create anonymously requests through Tor network}
   s.email = %q{brunogh@gmail.com}
   s.extra_rdoc_files = [
@@ -26,9 +26,13 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "lib/tor_requests.rb",
+    "lib/tor/configuration.rb",
+    "lib/tor/http.rb",
+    "lib/tor/tor_requests.rb",
+    "spec/configuration_spec.rb",
+    "spec/http_spec.rb",
+    "spec/integration_spec.rb",
     "spec/spec_helper.rb",
-    "spec/tor_requests_spec.rb",
     "tor_requests.gemspec"
   ]
   s.homepage = %q{http://github.com/brunogh/tor_requests}
