@@ -2,23 +2,26 @@
 
 1 - Install Tor
 
-* https://www.torproject.org
-* On Settings -> Advanced -> Fix the port to 9051
+* Download at https://www.torproject.org
+* Start Tor
+* You can change port configuration following On Settings -> Advanced -> Fix the port to 9051
 
 2 - Ruby code
   
-  res = Request.http("google.com")
+  res = Tor::HTTP.get("google.com", 80, "/")
   p res.code
   p res.body
   
 OR
   
-  res = Request.http("google.com", 80, "/")
+  res = Tor::HTTP.get("google.com")
   
-== Backlog
+Default configuration is port 9050 and ip 127.0.0.1. If you need to change configuration, you can call:
 
-* HTTPS
-* Making the running Tor port configurable
+  Tor.configure do |config|
+     config.ip = "127.0.0.1"
+     config.port = 9050
+  end  
 
 == Contributing to tor_requests
  
