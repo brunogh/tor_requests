@@ -5,7 +5,7 @@ module Tor
 
   class HTTP
 
-    def self.get(host, port = 80, path = "/")
+    def self.get(host, path = "/", port = 80)
       res = ""
       Net::HTTP.SOCKSProxy(Tor.configuration.ip, Tor.configuration.port).start(host, port) do |http|
         res = http.get(path)

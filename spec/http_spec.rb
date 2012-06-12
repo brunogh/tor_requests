@@ -10,7 +10,7 @@ describe "Http" do
     end
 
     it "makes a HTTP request to Google" do
-      res = Tor::HTTP.get("google.com", 80, "/")
+      res = Tor::HTTP.get("google.com", "/", 80)
       res.code.should eq("301")
     end
     
