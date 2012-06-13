@@ -11,7 +11,7 @@ module Tor
       if path
         host = uri_or_host
       else
-        host = uri_or_host.hostname
+        host = uri_or_host.host
         port = uri_or_host.port
       end
       Net::HTTP.SOCKSProxy(Tor.configuration.ip, Tor.configuration.port).start(host, port) do |http|

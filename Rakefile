@@ -22,6 +22,7 @@ Jeweler::Tasks.new do |gem|
   gem.email = "brunogh@gmail.com"
   gem.authors = ["Bruno Ghisi"]
   # dependencies defined in Gemfile
+  gem.add_dependency 'socksify'
 end
 Jeweler::RubygemsDotOrgTasks.new
 
