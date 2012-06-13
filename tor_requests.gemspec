@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{tor_requests}
-  s.version = "0.2.0"
+  s.name = "tor_requests"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = [%q{Bruno Ghisi}]
-  s.date = %q{2012-06-12}
-  s.description = %q{Create anonymously requests through Tor network}
-  s.email = %q{brunogh@gmail.com}
+  s.authors = ["Bruno Ghisi"]
+  s.date = "2012-06-13"
+  s.description = "Create anonymously requests through Tor network"
+  s.email = "brunogh@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.rdoc"
@@ -35,11 +35,11 @@ Gem::Specification.new do |s|
     "spec/spec_helper.rb",
     "tor_requests.gemspec"
   ]
-  s.homepage = %q{http://github.com/brunogh/tor_requests}
-  s.licenses = [%q{MIT}]
-  s.require_paths = [%q{lib}]
-  s.rubygems_version = %q{1.8.7}
-  s.summary = %q{Create anonymously requests through Tor network}
+  s.homepage = "http://github.com/brunogh/tor_requests"
+  s.licenses = ["MIT"]
+  s.require_paths = ["lib"]
+  s.rubygems_version = "1.8.15"
+  s.summary = "Create anonymously requests through Tor network"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
@@ -51,12 +51,14 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<jeweler>, ["~> 1.8.3"])
       s.add_development_dependency(%q<simplecov>, [">= 0"])
       s.add_development_dependency(%q<socksify>, [">= 0"])
+      s.add_runtime_dependency(%q<socksify>, [">= 0"])
     else
       s.add_dependency(%q<rspec>, ["~> 2.8.0"])
       s.add_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.8.3"])
       s.add_dependency(%q<simplecov>, [">= 0"])
+      s.add_dependency(%q<socksify>, [">= 0"])
       s.add_dependency(%q<socksify>, [">= 0"])
     end
   else
@@ -65,6 +67,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.8.3"])
     s.add_dependency(%q<simplecov>, [">= 0"])
+    s.add_dependency(%q<socksify>, [">= 0"])
     s.add_dependency(%q<socksify>, [">= 0"])
   end
 end
