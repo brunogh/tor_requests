@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "tor_requests"
+  s.name = %q{tor_requests}
   s.version = "0.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Bruno Ghisi"]
-  s.date = "2012-06-13"
-  s.description = "Create anonymously requests through Tor network"
-  s.email = "brunogh@gmail.com"
+  s.authors = [%q{Bruno Ghisi}]
+  s.date = %q{2012-11-18}
+  s.description = %q{Create anonymously requests through Tor network}
+  s.email = %q{brunogh@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.rdoc"
@@ -26,6 +26,9 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "lib/tor/configuration.rb",
+    "lib/tor/http.rb",
+    "lib/tor/tor_requests.rb",
     "lib/tor_requests.rb",
     "spec/configuration_spec.rb",
     "spec/http_spec.rb",
@@ -33,11 +36,11 @@ Gem::Specification.new do |s|
     "spec/spec_helper.rb",
     "tor_requests.gemspec"
   ]
-  s.homepage = "http://github.com/brunogh/tor_requests"
-  s.licenses = ["MIT"]
-  s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.15"
-  s.summary = "Create anonymously requests through Tor network"
+  s.homepage = %q{http://github.com/brunogh/tor_requests}
+  s.licenses = [%q{MIT}]
+  s.require_paths = [%q{lib}]
+  s.rubygems_version = %q{1.8.7}
+  s.summary = %q{Create anonymously requests through Tor network}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
