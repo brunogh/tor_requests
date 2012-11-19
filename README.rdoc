@@ -11,10 +11,6 @@
   res = Tor::HTTP.get("google.com", "/", 80)
   p res.code
   p res.body
-  
-OR
-  
-  res = Tor::HTTP.get("google.com")
 
 OR
 
