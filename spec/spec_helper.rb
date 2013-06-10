@@ -4,9 +4,6 @@ require 'rspec'
 require 'tor/http'
 require 'tor/configuration'
 require 'tor/tor_requests'
-require 'coveralls'
-
-Coveralls.wear!("rails")
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.

@@ -13,5 +13,3 @@ group :development do
   gem "simplecov"
   gem "socksify"
 end
-
-gem 'coveralls', require: false
