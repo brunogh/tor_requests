@@ -17,6 +17,7 @@ module Tor
       Net::HTTP.SOCKSProxy(Tor.configuration.ip, Tor.configuration.port).start(host, port) do |http|
         request = Net::HTTP::Get.new(path || uri_or_host.path)
         Tor.configuration.headers.each do |header, value|
+          request.delete(header)
           request.add_field(header, value)
         end
         
@@ -40,6 +41,7 @@ module Tor
         request = Net::HTTP::Post.new(path)
         request.set_form_data(post_options)
         Tor.configuration.headers.each do |header, value|
+          request.delete(header)
           request.add_field(header, value)
         end
         res = http.request(request)
