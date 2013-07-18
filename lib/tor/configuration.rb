@@ -8,6 +8,7 @@ module Tor
     attr_accessor :ip,
                   :port
     
+    attr_reader :headers
     
     def add_header(header, value)
       @headers[header] = value
