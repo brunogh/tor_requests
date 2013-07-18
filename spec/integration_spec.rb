@@ -10,6 +10,7 @@ describe "Configure" do
       Tor.configure do |config|
         config.ip = "a"
         config.port = 9051
+        config.add_header('User-Agent', 'Netscape 2.0')
       end
 
       proxy = Net::HTTP.SOCKSProxy("127.0.0.1", 9050)
