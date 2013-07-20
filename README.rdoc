@@ -28,6 +28,14 @@ The default port configuration is 9050 and ip configuration is 127.0.0.1. If you
      config.port = 9050
   end  
 
+You can also set additional custom header fields, e.g. User-Agent:
+
+  Tor.configure do |config|
+    config.add_header('User-Agent', 'Netscape 2.0')
+  end  
+
+
+
 == Contributing to tor_requests
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
