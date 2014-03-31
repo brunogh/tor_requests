@@ -4,9 +4,17 @@ require 'socksify/http'
 module Tor
 
   class HTTP
+    class TooManyRedirects < StandardError; end
+    REDIRECT_LIMIT = 3
+
+    class << self
+      attr_accessor :redirects_count
+    end
 
     def self.get(uri_or_host, path = nil, port = nil)
       res, host = "", nil
+      self.redirects_count = 0
+
       if path
         host = uri_or_host
       else
@@ -23,6 +31,7 @@ module Tor
         end
 
         res = http.request(request)
+        res = follow_redirect(res, http) # Follow redirects
       end
       res
     end
@@ -65,6 +74,31 @@ module Tor
         :use_ssl     => uri_or_host.scheme == 'https',
         :verify_mode => OpenSSL::SSL::VERIFY_NONE
       ]
+    end
+
+    def self.follow_redirect(response, http)
+      if response.kind_of?(Net::HTTPRedirection)
+        raise TooManyRedirects if self.redirects_count >= REDIRECT_LIMIT
+
+        request  = Net::HTTP::Get.new(fetch_redirect_url(response))
+        response = http.request(request)
+        self.redirects_count += 1
+        response = follow_redirect(response, http)
+
+      else
+        response
+      end
+
+    end
+
+    # Get the redirect url from the response.
+    # It searches in the "location" header and response body
+    def self.fetch_redirect_url(response)
+      if response['location'].nil?
+        response.body.match(/<a href=\"([^>]+)\">/i)[1]
+      else
+        response['location']
+      end
     end
 
   end

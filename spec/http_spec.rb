@@ -12,9 +12,14 @@ describe "Http" do
 
     context "with URI parameter" do
       ["http", "https"].each do |protocol|
-        it "works with #{protocol}" do
+        it "follows the #{protocol} redirects" do
           res = Tor::HTTP.get(URI("#{protocol}://google.com/"))
-          res.code.should eq("301")
+          res.code.should eq("200")
+        end
+
+        it "raises TooManyRedirects error" do
+          stub_const("Tor::HTTP::REDIRECT_LIMIT", 1)
+          expect { Tor::HTTP.get(URI("#{protocol}://google.com/")) }.to raise_error("Tor::HTTP::TooManyRedirects")
         end
       end
     end
@@ -22,7 +27,7 @@ describe "Http" do
     context "with host, path and port parameters" do
       it "works" do
         res = Tor::HTTP.get("google.com", "/", 80)
-        res.code.should eq("301")
+        res.code.should eq("200")
       end
     end
 
