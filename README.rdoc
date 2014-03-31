@@ -6,8 +6,8 @@
 * Start Tor
 * You can change port configuration by clicking on Settings -> Advanced -> Adjust the port to 9050
 
-2 - Ruby code
-  
+2 - Usage
+
   res = Tor::HTTP.get("google.com", "/", 80)
   p res.code
   p res.body
@@ -16,10 +16,12 @@
   p res.code
   p res.body
 
-OR
+with URIs (http & https)
 
-  res = Tor::HTTP.get(URI('http://google.com/'))
-  res = Tor::HTTP.post(URI('http://posttestserver.com/post.php?dir=example'), {"var" => "variable"})
+  Tor::HTTP.get(URI('http://google.com/'))
+  Tor::HTTP.get(URI('https://github.com/'))
+  Tor::HTTP.post(URI('http://posttestserver.com/post.php?dir=example'), {"var" => "variable"})
+
   
 The default port configuration is 9050 and ip configuration is 127.0.0.1. If you need to change configuration, you can use:
 
