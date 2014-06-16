@@ -17,10 +17,12 @@ describe "Http" do
           res.code.should eq("200")
         end
 
-        it "raises TooManyRedirects error" do
-          stub_const("Tor::HTTP::REDIRECT_LIMIT", 1)
-          expect { Tor::HTTP.get(URI("#{protocol}://google.com/")) }.to raise_error("Tor::HTTP::TooManyRedirects")
+        context "with custom redirects limit" do
+          it "raises TooManyRedirects error after 1 retry" do
+            expect { Tor::HTTP.get(URI("#{protocol}://bit.ly/1ngrqeH"), nil, nil, 1) }.to raise_error("Tor::HTTP::TooManyRedirects")
+          end
         end
+
       end
     end
 
