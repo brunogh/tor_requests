@@ -7,12 +7,12 @@ module Tor
     class TooManyRedirects < StandardError; end
 
     class << self
-      attr_accessor :redirects_count
+      attr_accessor :redirects_made
     end
 
     def self.get(uri_or_host, path = nil, port = nil, max_redirects = 3)
       res, host = "", nil
-      self.redirects_count = 0
+      self.redirects_made = 0
 
       if path
         host = uri_or_host
@@ -32,6 +32,7 @@ module Tor
         res = http.request(request)
         res = follow_redirect(res, http, max_redirects) # Follow redirects
       end
+
       res
     end
 
@@ -77,12 +78,11 @@ module Tor
 
     def self.follow_redirect(response, http, max_redirects)
       if response.kind_of?(Net::HTTPRedirection)
-        raise TooManyRedirects if self.redirects_count >= max_redirects
+        raise TooManyRedirects if self.redirects_made >= max_redirects
         request  = Net::HTTP::Get.new(fetch_redirect_url(response))
         response = http.request(request)
-        self.redirects_count += 1
+        self.redirects_made += 1
         response = follow_redirect(response, http, max_redirects)
-
       else
         response
       end
