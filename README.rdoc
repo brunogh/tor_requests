@@ -24,7 +24,8 @@ with URIs (http & https)
 
 with redirects
   res = Tor::HTTP.get("google.com", "/", 80, 10)
-  By default 3 redirects are followed. To prevent infinite loops a TooManyRedirects error is raised.
+  By default 3 redirects are followed. 
+  To prevent infinite loops a TooManyRedirects error is raised.
   The limit can be changed by updating the last parameter.
 
 The default port configuration is 9050 and ip configuration is 127.0.0.1. If you need to change configuration, you can use:
