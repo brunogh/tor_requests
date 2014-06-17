@@ -22,24 +22,29 @@ with URIs (http & https)
   Tor::HTTP.get(URI('https://github.com/'))
   Tor::HTTP.post(URI('http://posttestserver.com/post.php?dir=example'), {"var" => "variable"})
 
-  
+with redirects
+  res = Tor::HTTP.get("google.com", "/", 80, 10)
+  By default 3 redirects are followed. 
+  To prevent infinite loops a TooManyRedirects error is raised.
+  The limit can be changed by updating the last parameter.
+
 The default port configuration is 9050 and ip configuration is 127.0.0.1. If you need to change configuration, you can use:
 
   Tor.configure do |config|
      config.ip = "127.0.0.1"
      config.port = 9050
-  end  
+  end
 
 You can also set additional custom header fields, e.g. User-Agent:
 
   Tor.configure do |config|
     config.add_header('User-Agent', 'Netscape 2.0')
-  end  
+  end
 
 
 
 == Contributing to tor_requests
- 
+
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
 * Fork the project.
