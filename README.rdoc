@@ -55,7 +55,7 @@ You can also set additional custom header fields, e.g. User-Agent:
 
 == Copyright
 
-Copyright (c) 2012 Bruno Ghisi. See LICENSE.txt for
+Copyright (c) 2016 Bruno Ghisi. See LICENSE.txt for
 further details.
 
 
