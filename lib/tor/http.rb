@@ -46,7 +46,7 @@ module Tor
     def self.get_with_socks_proxy(uri_or_host, host, port, path, max_redirects)
       start_params = start_parameters(uri_or_host, host, port)
       start_socks_proxy(start_params) do |http|
-        request = Net::HTTP::Get.new(path || uri_or_host.path)
+        request = Net::HTTP::Get.new(path || uri_or_host)
         Tor.configuration.headers.each do |header, value|
           request.delete(header)
           request.add_field(header, value)

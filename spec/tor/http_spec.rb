@@ -15,7 +15,7 @@ describe Tor::HTTP do
     context "with URI parameter" do
       %w[http https].each do |protocol|
         it "follows the #{protocol} redirects" do
-          stub_request(:get, "#{protocol}://google.com/").with(
+          stub_request(:get, "#{protocol}://google.com/?q=1234").with(
             headers: {
               "Accept" => "*/*",
               "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
@@ -23,7 +23,7 @@ describe Tor::HTTP do
             }
           ).to_return(status: 200, body: "", headers: {})
 
-          res = tor_http.get(URI("#{protocol}://google.com/"))
+          res = tor_http.get(URI("#{protocol}://google.com/?q=1234"))
 
           expect(res.code).to eq("200")
         end
