@@ -88,7 +88,7 @@ describe Tor::HTTP do
     context "with URI parameter" do
       %w[http https].each do |protocol|
         before do
-          stub_request(:post, "#{protocol}://posttestserver.com/post.php?dir=example").with(
+          stub_request(:post, "#{protocol}://google.com/post.php?dir=example").with(
             body: { "q" => "query", "var" => "variable" },
             headers: {
               "Accept" => "*/*",
@@ -100,7 +100,7 @@ describe Tor::HTTP do
         end
 
         it "returns 200 with #{protocol}" do
-          res = tor_http.post(URI("#{protocol}://posttestserver.com/post.php?dir=example"),
+          res = tor_http.post(URI("#{protocol}://google.com/post.php?dir=example"),
                               { "q" => "query", "var" => "variable" })
 
           expect(res.code).to eq("200")

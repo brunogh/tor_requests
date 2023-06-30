@@ -13,8 +13,6 @@ module Tor
     end
 
     def self.get(uri_or_host, path = nil, port = nil, max_redirects = 3)
-      res = ""
-      host = nil
       self.redirects_made = 0
 
       if path
@@ -24,6 +22,28 @@ module Tor
         port = uri_or_host.port
       end
 
+      get_with_socks_proxy(uri_or_host, host, port, path, max_redirects)
+    end
+
+    def self.post(uri_or_host, post_options = {}, path = nil, port = nil)
+      if path
+        host = uri_or_host
+      else
+        host = uri_or_host.host
+        port = uri_or_host.port
+        path = uri_or_host.request_uri
+      end
+
+      post_with_socks_proxy(uri_or_host, host, port, path, post_options)
+    end
+
+    def self.start_socks_proxy(start_params, &block)
+      Net::HTTP.SOCKSProxy(Tor.configuration.ip, Tor.configuration.port).start(*start_params) do |http|
+        block.call(http)
+      end
+    end
+
+    def self.get_with_socks_proxy(uri_or_host, host, port, path, max_redirects)
       start_params = start_parameters(uri_or_host, host, port)
       start_socks_proxy(start_params) do |http|
         request = Net::HTTP::Get.new(path || uri_or_host.path)
@@ -33,23 +53,12 @@ module Tor
         end
 
         res = http.request(request)
-        res = follow_redirect(res, http, max_redirects) # Follow redirects
-      end
 
-      res
+        follow_redirect(res, http, max_redirects)
+      end
     end
 
-    def self.post(uri_or_host, post_options = {}, path = nil, port = nil)
-      res = ""
-      host = nil
-      if path
-        host = uri_or_host
-      else
-        host = uri_or_host.host
-        port = uri_or_host.port
-        path = uri_or_host.request_uri
-      end
-
+    def self.post_with_socks_proxy(uri_or_host, host, port, path, post_options)
       start_params = start_parameters(uri_or_host, host, port)
       start_socks_proxy(start_params) do |http|
         request = Net::HTTP::Post.new(path)
@@ -60,15 +69,7 @@ module Tor
           request.add_field(header, value)
         end
 
-        res = http.request(request)
-      end
-
-      res
-    end
-
-    def self.start_socks_proxy(start_params, &block)
-      Net::HTTP.SOCKSProxy(Tor.configuration.ip, Tor.configuration.port).start(*start_params) do |http|
-        block.call(http)
+        http.request(request)
       end
     end
 
