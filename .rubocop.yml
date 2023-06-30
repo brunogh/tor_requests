@@ -1,0 +1,12 @@
+require: rubocop-rspec
+
+AllCops:
+  Exclude:
+    - "*.gemspec"
+  NewCops: enable
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+RSpec/ExampleLength:
+  Max: 12
