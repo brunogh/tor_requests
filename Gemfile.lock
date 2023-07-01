@@ -47,6 +47,10 @@ GEM
       racc (~> 1.4)
     nokogiri (1.15.2-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.15.2-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.15.2-x86_64-linux)
+      racc (~> 1.4)
     oauth2 (1.4.8)
       faraday (>= 0.8, < 3.0)
       jwt (>= 1.0, < 3.0)
@@ -122,6 +126,8 @@ GEM
 PLATFORMS
   aarch64-linux
   arm64-darwin-21
+  x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   bundler (~> 2.4)
