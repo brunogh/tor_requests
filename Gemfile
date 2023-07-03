@@ -1,15 +1,16 @@
-source "http://rubygems.org"
-# Add dependencies required to use your gem here.
-# Example:
-#   gem "activesupport", ">= 2.3.5"
+# frozen_string_literal: true
 
-# Add dependencies to develop your gem here.
-# Include everything needed to run rake, tests, features, etc.
-group :development do
-  gem "rspec", "~> 2.11.0"
-  gem "rdoc", "~> 3.12"
-  gem "bundler", "~> 1.3.5"
-  gem "jeweler", "~> 2.0.1"
-  gem "simplecov"
-  gem "socksify"
+source "http://rubygems.org"
+
+group :development, :test do
+  gem "bundler", "~> 2.4"
+  gem "byebug", "~> 11.1"
+  gem "jeweler", "~> 2.3"
+  gem "rdoc", "~> 6.5"
+  gem "rspec", "~> 3.12"
+  gem "rubocop", "~> 1.53"
+  gem "rubocop-rspec", "~> 2.22"
+  gem "simplecov", "~> 0.22.0"
+  gem "socksify", "~> 1.7"
+  gem "webmock", "~> 3.13"
 end

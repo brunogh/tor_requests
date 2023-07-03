@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# This class allows to define a configuration for Tor
 module Tor
   class << self
     def configuration
@@ -8,12 +11,11 @@ module Tor
       config
       yield(configuration)
     end
-    
+
     private
-    
+
     def config
-      @onfiguration ||= Configuration.new
+      @config ||= Configuration.new
     end
-    
   end
 end

@@ -1,0 +1,13 @@
+require: rubocop-rspec
+
+AllCops:
+  Exclude:
+    - "*.gemspec"
+    - "vendor/bundle/**/*" # https://github.com/rubocop/rubocop/issues/9832#issuecomment-882111229
+  NewCops: enable
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+RSpec/ExampleLength:
+  Max: 12
